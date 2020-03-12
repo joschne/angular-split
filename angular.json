@@ -10,13 +10,14 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/angular-split-app",
             "index": "src_app/index.html",
             "main": "src_app/main.ts",
@@ -54,6 +55,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -79,13 +84,14 @@
       "prefix": "app-lazy",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/angular-split-app/lazy",
             "index": "src_lazy_app/index.html",
             "main": "src_lazy_app/main.ts",
@@ -122,6 +128,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -147,13 +157,14 @@
       "prefix": "app-lazy2",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/angular-split-app/lazy2",
             "index": "src_lazy_app2/index.html",
             "main": "src_lazy_app2/main.ts",
@@ -190,6 +201,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -220,7 +235,12 @@
             "tsConfig": "projects/angular-split/tsconfig.lib.json",
             "project": "projects/angular-split/ng-package.json"
           }
-        }
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular-split/tsconfig.lib.prod.json"
+            }
+          }
+}
       }
     }
   },
