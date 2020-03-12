@@ -9,7 +9,11 @@ import { HomeComponent } from './home.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'lazy', loadChildren: './lazy-loaded-module/lazy-loaded.module#LazyLoadedModule' }
+  {
+    path: 'lazy',
+    loadChildren: () => import('./lazy-loaded-module/lazy-loaded.module')
+      .then(m => m.LazyLoadedModule)
+  }
 ];
 
 @NgModule({
@@ -22,9 +26,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
   ],
   providers: [{
-    provide: LocationStrategy, 
+    provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
