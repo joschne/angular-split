@@ -9,6 +9,7 @@
     "polyfills.ts"
   ],
   "include": [
+    "typings.d.ts",
     "src_app/**/*.d.ts"
   ]
 }
